@@ -1,0 +1,253 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: #f7f7f7;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #006251;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.progress-bar div {
+    height: 100%;
+    width: 0;
+    background-color: #006251;
+    transition: width 0.4s ease-in-out;
+}
+
+.progress-steps {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.step {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    background-color: #ffffff;
+    border: 1px solid #006251;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option:hover, .option.selected {
+    background-color: #cce0ff;
+}
+
+button, .button {
+    padding: 10px 20px;
+    background-color: #006251;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+button:hover, .button:hover {
+    background-color: #004d40;
+}
+
+.ghost-button {
+    background-color: transparent;
+    border: 1px solid #006251;
+    color: #006251;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+}
+
+.ghost-button:hover {
+    background-color: #006251;
+    color: #ffffff;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card.success {
+    border-left: 5px solid green;
+}
+
+.card.warning {
+    border-left: 5px solid orange;
+}
+
+.card.error {
+    border-left: 5px solid red;
+}
+
+.card.info {
+    border-left: 5px solid blue;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #006251;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin: 10px 0;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.infographic {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#reminderForm {
+    display: none;
+    margin-top: 10px;
+}
+
+#reminderForm label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#reminderForm input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cta a {
+    text-decoration: none;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.summary-card h4 {
+    grid-column: 1 / -1;
+    font-size: 20px;
+    margin: 10px 0 5px;
+    color: #006251;
+}
+
+.summary-card p {
+    margin: 2px 0;
+    font-weight: normal;
+}
+
+.summary-card .icon {
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #006251;
+}
+
+@media (max-width: 600px) {
+    .summary-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Add styles for the restart button */
+.restart-button {
+    background-color: #ff5252;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.restart-button:hover {
+    background-color: #ff0000;
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Aid Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </header>
+        <h1>Decision Aid Tool</h1>
+        <div class="progress-bar">
+            <div></div>
+            <div class="progress-steps">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <form id="decisionAidForm">
+            <div class="step auto-progress" id="introStep">
+                <div class="card info">
+                    <h3>Welcome to the Decision Aid Tool</h3>
+                    <p>This tool will help you make an informed decision about starting, continuing, or stopping a prevention strategy for HIV or STIs.</p>
+                    <h3>Which decision aid would you like to use?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption('aidType', 'PrEP', 'introStep')">
+                            <i class="fas fa-pills"></i> HIV Prevention (PrEP)
+                        </div>
+                        <div class="option" onclick="selectOption('aidType', 'DoxyPEP', 'introStep')">
+                            <i class="fas fa-syringe"></i> STI Prevention (DoxyPEP)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step auto-progress" id="combinedIntroStep" style="display:none;">
+                <div class="card info" id="prepIntroContent">
+                    <h3>Welcome to the PrEP Decision Aid Tool</h3>
+                    <p>This tool is designed to help you make an informed decision about starting, continuing, or stopping pre-exposure prophylaxis (PrEP) for HIV prevention.</p>
+                    <h3>What is PrEP?</h3>
+                    <p>Pre-exposure prophylaxis (PrEP) is a medication that can help prevent HIV. It's highly effective when taken as prescribed.</p>
+                    <h3>How Does PrEP Work?</h3>
+                    <p>PrEP works by preventing HIV from establishing an infection inside the body. It is typically taken once daily and requires regular check-ups with a healthcare provider.</p>
+                    <h3>Who Should Consider PrEP?</h3>
+                    <p>PrEP is recommended for people who are at high risk of HIV, including those who have a sexual partner with HIV, have multiple sexual partners, or engage in injection drug use.</p>
+                    <button type="button" onclick="nextStep('combinedIntroStep')">Continue</button>
+                </div>
+                <div class="card info" id="doxypepIntroContent" style="display:none;">
+                    <h3>Welcome to the DoxyPEP Decision Aid Tool</h3>
+                    <p>This tool is designed to help you make an informed decision about starting, continuing, or stopping doxycycline post-exposure prophylaxis (DoxyPEP) for STI prevention.</p>
+                    <h3>What is DoxyPEP?</h3>
+                    <p>Doxycycline post-exposure prophylaxis (DoxyPEP) is a medication regimen that can help prevent sexually transmitted infections (STIs) when taken after potential exposure.</p>
+                    <h3>How Does DoxyPEP Work?</h3>
+                    <p>DoxyPEP works by preventing the bacteria that cause STIs from establishing an infection in the body. It is taken shortly after potential exposure to STIs.</p>
+                    <h3>Who Should Consider DoxyPEP?</h3>
+                    <p>DoxyPEP is recommended for people who are at high risk of STIs, including those with multiple sexual partners or those who have a partner with a known STI.</p>
+                    <button type="button" onclick="nextStep('combinedIntroStep')">Continue</button>
+                </div>
+            </div>
+
+            <div class="step auto-progress" id="step1" style="display:none;">
+                <label><i class="fas fa-question-circle"></i> What decision about this medication are you trying to make?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('decision', 'start', 'step1')">
+                        <i class="fas fa-play-circle"></i> I am not currently taking it and I want to decide whether to start taking it.
+                    </div>
+                    <div class="option" onclick="selectOption('decision', 'continue', 'step1')">
+                        <i class="fas fa-redo-alt"></i> I am taking it now, and I want to decide whether to continue taking it.
+                    </div>
+                    <div class="option" onclick="selectOption('decision', 'stop', 'step1')">
+                        <i class="fas fa-stop-circle"></i> I am considering stopping it.
+                    </div>
+                    <div class="option" onclick="selectOption('decision', 'not_sure', 'step1')">
+                        <i class="fas fa-question"></i> I am not sure and need more information.
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step1')">Back</button>
+            </div>
+            <div class="step" id="step2" style="display:none;">
+                <label><i class="fas fa-heartbeat"></i> What is motivating you to make this decision? (Check all that apply)</label>
+                <div class="options">
+                    <div class="option" onclick="toggleOption('motivation', 'responsible', this)">
+                        <i class="fas fa-user-check"></i> Showing that I am a responsible person
+                    </div>
+                    <div class="option" onclick="toggleOption('motivation', 'health', this)">
+                        <i class="fas fa-notes-medical"></i> Important for my health
+                    </div>
+                    <div class="option" onclick="toggleOption('motivation', 'relationship', this)">
+                        <i class="fas fa-hand-holding-heart"></i> Improving my relationship
+                    </div>
+                    <div class="option" onclick="toggleOption('motivation', 'recommendation', this)">
+                        <i class="fas fa-user-md"></i> Recommendation from healthcare provider
+                    </div>
+                    <div class="option" onclick="toggleOption('motivation', 'reduce_risk', this)">
+                        <i class="fas fa-shield-alt"></i> Reducing my risk
+                    </div>
+                    <div class="option" onclick="toggleOption('motivation', 'peace_of_mind', this)">
+                        <i class="fas fa-smile"></i> Peace of mind
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step2')">Back</button>
+                <button type="button" onclick="nextStep('step2')">Next</button>
+            </div>
+            <div class="step auto-progress" id="step3" style="display:none;">
+                <label><i class="fas fa-user-cog"></i> What role do you prefer in making the choice?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('role', 'autonomous', 'step3')">
+                        <i class="fas fa-user"></i> I prefer to make the decision myself
+                    </div>
+                    <div class="option" onclick="selectOption('role', 'shared', 'step3')">
+                        <i class="fas fa-handshake"></i> I prefer to make the decision together with my healthcare provider
+                    </div>
+                    <div class="option" onclick="selectOption('role', 'delegated', 'step3')">
+                        <i class="fas fa-user-md"></i> I prefer to have my healthcare provider make the decision for me
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step3')">Back</button>
+            </div>
+            <div class="step auto-progress" id="step4" style="display:none;">
+                <label><i class="fas fa-hourglass-half"></i> How close are you to making a decision?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('decisionStage', 'not_started', 'step4')">
+                        <i class="fas fa-hourglass-start"></i> I have not started to think about it
+                    </div>
+                    <div class="option" onclick="selectOption('decisionStage', 'started', 'step4')">
+                        <i class="fas fa-hourglass-half"></i> I have started to think about it
+                    </div>
+                    <div class="option" onclick="selectOption('decisionStage', 'close', 'step4')">
+                        <i class="fas fa-hourglass-end"></i> I have thought about it and am close to a decision
+                    </div>
+                    <div class="option" onclick="selectOption('decisionStage', 'decided', 'step4')">
+                        <i class="fas fa-check-circle"></i> I have made a decision
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step4')">Back</button>
+            </div>
+            <div class="step auto-progress" id="step5" style="display:none;">
+                <label><i class="fas fa-exclamation-circle"></i> Do you have any concerns about taking this medication?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('concerns', 'yes', 'step5')">
+                        <i class="fas fa-thumbs-down"></i> Yes
+                    </div>
+                    <div class="option" onclick="selectOption('concerns', 'no', 'step5')">
+                        <i class="fas fa-thumbs-up"></i> No
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step5')">Back</button>
+            </div>
+            <div class="step auto-progress" id="step6" style="display:none;">
+                <label><i class="fas fa-info-circle"></i> Do you feel you have enough information to make a decision?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('information', 'yes', 'step6')">
+                        <i class="fas fa-check-circle"></i> Yes
+                    </div>
+                    <div class="option" onclick="selectOption('information', 'no', 'step6')">
+                        <i class="fas fa-times-circle"></i> No
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step6')">Back</button>
+            </div>
+            <div class="step auto-progress" id="step7" style="display:none;">
+                <label><i class="fas fa-flag"></i> How important is it for you to avoid infections?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('importance', 'very_important', 'step7')">
+                        <i class="fas fa-exclamation-circle"></i> Very important
+                    </div>
+                    <div class="option" onclick="selectOption('importance', 'somewhat_important', 'step7')">
+                        <i class="fas fa-exclamation-triangle"></i> Somewhat important
+                    </div>
+                    <div class="option" onclick="selectOption('importance', 'not_important', 'step7')">
+                        <i class="fas fa-circle"></i> Not important
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step7')">Back</button>
+            </div>
+            <div class="step" id="step8" style="display:none;">
+                <label><i class="fas fa-heart"></i> Do you or your partner(s) have any of the following risk factors? (Check all that apply)</label>
+                <div class="options">
+                    <div class="option" onclick="toggleOption('riskFactors', 'positive_partner', this)">
+                        <i class="fas fa-ribbon"></i> Partner with a known infection
+                    </div>
+                    <div class="option" onclick="toggleOption('riskFactors', 'multiple_partners', this)">
+                        <i class="fas fa-users"></i> Multiple sexual partners
+                    </div>
+                    <div class="option" onclick="toggleOption('riskFactors', 'inject_drugs', this)">
+                        <i class="fas fa-syringe"></i> Inject drugs
+                    </div>
+                    <div class="option" onclick="toggleOption('riskFactors', 'sex_without_condoms', this)">
+                        <i class="fas fa-ban"></i> Sex without condoms
+                    </div>
+                    <div class="option" onclick="toggleOption('riskFactors', 'recent_infection', this)">
+                        <i class="fas fa-clinic-medical"></i> Recent infection
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step8')">Back</button>
+                <button type="button" onclick="nextStep('step8')">Next</button>
+            </div>
+            <div class="step auto-progress" id="step9" style="display:none;">
+                <label><i class="fas fa-clock"></i> How often do you get tested for infections?</label>
+                <div class="options">
+                    <div class="option" onclick="selectOption('testingFrequency', 'regularly', 'step9')">
+                        <i class="fas fa-calendar-check"></i> Regularly (every 3-6 months)
+                    </div>
+                    <div class="option" onclick="selectOption('testingFrequency', 'occasionally', 'step9')">
+                        <i class="fas fa-calendar-alt"></i> Occasionally (once a year)
+                    </div>
+                    <div class="option" onclick="selectOption('testingFrequency', 'never', 'step9')">
+                        <i class="fas fa-calendar-times"></i> Never
+                    </div>
+                </div>
+                <button type="button" onclick="prevStep('step9')">Back</button>
+            </div>
+            <div class="step" id="summaryStep" style="display:none;">
+                <h3>Summary</h3>
+                <p>Review your responses before submitting:</p>
+                <div id="summaryContent"></div>
+                <button type="button" onclick="prevStep('summaryStep')">Back</button>
+                <button type="button" onclick="submitForm()">Submit</button>
+                <button type="button" class="restart-button" onclick="restart()">Restart</button>
+            </div>
+
+        </form>
+        <div id="result" style="display:none;"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
