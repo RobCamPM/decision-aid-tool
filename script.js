@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.submitReminder = (event) => {
         event.preventDefault();
         const email = getElement('email').value;
-        alert(validateEmail(email) ? `Reminder will be sent to: ${email}` : 'Please enter a valid email address.');
+        alert(validateEmail(email) ? `This is a non-functioning proof of concept prototype. Your email is not caputred and no reminder will be sent.` : 'Please enter a valid email address.');
     };
 
     // Validate email format
